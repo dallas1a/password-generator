@@ -1,4 +1,4 @@
-//
+//calls math.random
 var randomNumber = function (min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -101,6 +101,7 @@ var chooseSpecial = function () {
 
 }
 
+
 // Generates password after calling each function as new variable 
 //and adding the character type based on if true from previous character selection functions.
 function generatePassword() {
@@ -112,6 +113,11 @@ function generatePassword() {
     optUpperCase = chooseUpperCase();
     optChooseNum = chooseNum();
     optChooseSpecial = chooseSpecial();
+   //if user does not define at least one character type , user must restart and pick at least one. 
+    if (optLowerCase === false && optUpperCase === false && optChooseNum === false && optChooseSpecial=== false) {
+        window.alert("You need to pick at least one character type, please try again .");
+        return generatePassword();
+    }
     //Executes while loop while password string length is less than optPassword Length.
     // Only adds letter if type is selected and password length is less than the value input into lengthSelect.
     while (password.length < optPasswordLength) {

@@ -16,7 +16,7 @@ var symbolList = "!@#$%^&*_-+=";
 var choosePasswordLength = function () {
     var lengthSelect = window.prompt('How long would you like your password to be? Must be at least 8 characters and must be less than 128.');
 
-    // Conditional Recursive Function Call
+    // Outputs lengthSelect if answer is valid.
     if (lengthSelect < 8 || lengthSelect > 128) {
         window.alert("You need to provide a valid answer! Please try again.");
         return choosePasswordLength();
@@ -112,6 +112,8 @@ function generatePassword() {
     optUpperCase = chooseUpperCase();
     optChooseNum = chooseNum();
     optChooseSpecial = chooseSpecial();
+    //Executes while loop while password string length is less than optPassword Length.
+    // Only adds letter if type is selected and password length is less than the value input into lengthSelect.
     while (password.length < optPasswordLength) {
 
         if (optLowerCase === true && password.length < optPasswordLength) {
@@ -146,7 +148,7 @@ function generatePassword() {
 }
 
 
-// Write password to the #password input
+// Writes password based on generatePassword function.
 function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
@@ -155,5 +157,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// Adds event listener to generate button
 generateBtn.addEventListener("click", writePassword);
